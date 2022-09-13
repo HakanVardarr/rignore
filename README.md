@@ -7,6 +7,11 @@
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE-MIT)
 
 
+### TODO:
+
+Add cache support ✅\
+Orginize the code ❌
+
 
 
 ### Generate .gitignore files using [gitignore.io](https://gitignore.io) api
