@@ -18,7 +18,7 @@ struct Cache {
 impl Cache {
     async fn new() -> Self {
         let path = String::from(format!(
-            "{}/rignore-cache-list",
+            "{}/rignore-cache",
             dirs::cache_dir().unwrap().to_string_lossy()
         ));
 
@@ -57,7 +57,6 @@ impl Cache {
             dirs::cache_dir().unwrap().to_string_lossy()
         ));
 
-        create_dir_all(path.clone());
         let mut file = match File::open(format!("{}/rignore-cache-{}", path, lang)) {
             Ok(mut file) => (),
             Err(e) => {
