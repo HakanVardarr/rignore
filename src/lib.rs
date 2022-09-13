@@ -20,10 +20,10 @@ impl<'a> Rignore<'a> {
         };
         list
     }
-    pub async fn get_gitignore_file(&self, language: &String) -> Result<String, &'static str> {
+    pub async fn get_gitignore_file(&self) -> Result<String, &'static str> {
         let url = format!(
             "https://www.toptal.com/developers/gitignore/api/{}",
-            language
+            self.language.unwrap()
         );
         let result = match reqwest::get(url).await {
             Ok(res) => res.text().await.unwrap(),
@@ -65,7 +65,7 @@ pub async fn run() -> Result<(), &'static str> {
 
     if let Some(lang) = language {
         if list.contains(&lang) {
-            let gitignore = match cli.get_gitignore_file(lang).await {
+            let gitignore = match cli.get_gitignore_file().await {
                 Ok(file) => file,
                 Err(e) => {
                     return Err(e);
@@ -74,7 +74,7 @@ pub async fn run() -> Result<(), &'static str> {
             let mut file = std::fs::File::create(".gitignore").unwrap();
             file.write(gitignore.as_bytes());
         } else {
-            return Err("Language is not suported");
+            return Err("Language is not suported you use list command to see suported languages");
         }
     } else {
         for lang in list.iter() {
