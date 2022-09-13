@@ -4,7 +4,6 @@ version = "0.1.0"
 edition = "2021"
 authors = ["Hakan Vardar"]
 description = "Generate .gitignore files using gitignore.io api"
-categories = ["gitignore", "git", "ignore"]
 license = "MIT"
 repository = "https://github.com/HakanVardarr/rignore"
 
