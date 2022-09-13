@@ -2,8 +2,14 @@
 
 <img width="371" alt="image" src="https://user-images.githubusercontent.com/112097111/189715281-6287eecc-b939-4f5c-9e59-b1ce54af14fa.png">
 
+[![Crates.io](https://img.shields.io/crates/v/rignore?style=flat-square)](https://crates.io/crates/rignore)
+[![Crates.io](https://img.shields.io/crates/d/rignore?style=flat-square)](https://crates.io/crates/rignore)
+[![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE-MIT)
 
-### Generate .gitignore files using gitignore.io api
+
+
+
+### Generate .gitignore files using [gitignore.io](https://gitignore.io) api
 
 -----
 First you need to build the binary
