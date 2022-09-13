@@ -43,8 +43,9 @@ OPTIONS:
     -V, --version    Print version information
 
 SUBCOMMANDS:
-    help    Print this message or the help of the given subcommand(s)
-    list    Lists suported languages
+    clear    Clears the cache
+    help     Print this message or the help of the given subcommand(s)
+    list     Lists suported languages
 
 ```
 
@@ -68,3 +69,13 @@ But if you want to list by cli command you can use
 rignore list
 
 ```
+-----
+
+You can clear the cache with clear command
+
+```bash
+
+rignore clear
+
+```
+
