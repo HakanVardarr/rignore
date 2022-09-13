@@ -26,6 +26,14 @@ cargo build --release
 
 ```
 
+or
+
+```bash
+
+cargo install rignore
+
+```
+
 -----
 
 ```bash
