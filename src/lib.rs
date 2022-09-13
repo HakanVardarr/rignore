@@ -2,16 +2,16 @@
 use clap::{App, Arg, SubCommand};
 use std::{io::Write, process};
 
-pub struct Rignore<'a> {
+struct Rignore<'a> {
     language: Option<&'a String>,
 }
 
 impl<'a> Rignore<'a> {
-    pub fn new(language: Option<&'a String>) -> Self {
+    fn new(language: Option<&'a String>) -> Self {
         Self { language }
     }
-    pub async fn list_suported_langs(&self) -> Vec<String> {
-        let list = match _list_suported_langs().await {
+    async fn list_suported_langs(&self) -> Vec<String> {
+        let list = match Rignore::_list_suported_langs().await {
             Ok(list) => list,
             Err(e) => {
                 eprintln!("ERROR: {e}");
@@ -20,7 +20,7 @@ impl<'a> Rignore<'a> {
         };
         list
     }
-    pub async fn get_gitignore_file(&self) -> Result<String, &'static str> {
+    async fn get_gitignore_file(&self) -> Result<String, &'static str> {
         let url = format!(
             "https://www.toptal.com/developers/gitignore/api/{}",
             self.language.unwrap()
@@ -32,18 +32,17 @@ impl<'a> Rignore<'a> {
 
         Ok(result)
     }
-}
+    async fn _list_suported_langs() -> Result<Vec<String>, &'static str> {
+        let url = "https://www.toptal.com/developers/gitignore/api/list";
+        let result = match reqwest::get(url).await {
+            Ok(res) => res.text().await.unwrap(),
+            Err(_) => return Err("Cannot send request to server"),
+        };
 
-async fn _list_suported_langs() -> Result<Vec<String>, &'static str> {
-    let url = "https://www.toptal.com/developers/gitignore/api/list";
-    let result = match reqwest::get(url).await {
-        Ok(res) => res.text().await.unwrap(),
-        Err(_) => return Err("Cannot send request to server"),
-    };
+        let list_of_langs: Vec<String> = result.split(",").map(|value| value.to_owned()).collect();
 
-    let list_of_langs: Vec<String> = result.split(",").map(|value| value.to_owned()).collect();
-
-    Ok(list_of_langs)
+        Ok(list_of_langs)
+    }
 }
 
 pub async fn run() -> Result<(), &'static str> {
