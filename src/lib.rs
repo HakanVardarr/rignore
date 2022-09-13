@@ -29,7 +29,9 @@ impl Cache {
             Ok(mut file) => {
                 let string = file.read_to_string(&mut suported_langs);
                 for lang in suported_langs.split("\n") {
-                    suported_langs_vec.push(lang.to_owned());
+                    for rlang in lang.split(" ") {
+                        suported_langs_vec.push(rlang.to_owned());
+                    }
                 }
             }
             Err(_) => {
@@ -38,7 +40,7 @@ impl Cache {
                 let mut list = Rignore::_list_suported_langs().await.unwrap();
 
                 for line in list.iter_mut() {
-                    line.push_str("\n");
+                    line.push_str(" ");
                     lang_list.write(line.as_bytes());
                 }
                 suported_langs_vec = list;
@@ -129,7 +131,12 @@ pub async fn run() -> Result<(), &'static str> {
 
     let language: Option<&String> = app.get_one("LANGUAGE");
     let cli = Rignore::new().await;
-    let list = &cli.cache.suported_langs;
+    let list = &cli
+        .cache
+        .suported_langs
+        .iter()
+        .map(|l| l.trim().to_owned())
+        .collect::<Vec<String>>();
 
     if let Some(lang) = language {
         if list.contains(&lang) {
@@ -150,7 +157,7 @@ pub async fn run() -> Result<(), &'static str> {
             for lang in list.iter() {
                 if lang == "" {
                 } else {
-                    println!("-> {}", lang.trim());
+                    println!("{}", lang);
                 }
             }
         }
@@ -160,7 +167,7 @@ pub async fn run() -> Result<(), &'static str> {
         for lang in list.iter() {
             if lang == "" {
             } else {
-                println!("-> {}", lang);
+                println!("{}", lang);
             }
         }
     }
