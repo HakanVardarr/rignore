@@ -3,3 +3,5 @@ rust:
   - 1.62.1
 scripts:
   - cargo run list
+os:
+  - macos
