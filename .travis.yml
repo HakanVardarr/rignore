@@ -3,5 +3,6 @@ rust:
   - 1.62.1
 scripts:
   - cargo run list
+  - cargo run rust && cat .gitignore
 os:
   - windows
