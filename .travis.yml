@@ -4,4 +4,4 @@ rust:
 scripts:
   - cargo run list
 os:
-  - macos
+  - windows
