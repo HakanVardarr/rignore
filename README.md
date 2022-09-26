@@ -5,7 +5,7 @@
 [![Crates.io](https://img.shields.io/crates/v/rignore?style=flat-square)](https://crates.io/crates/rignore)
 [![Crates.io](https://img.shields.io/crates/d/rignore?style=flat-square)](https://crates.io/crates/rignore)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE-MIT)
-[![Build Status](https://app.travis-ci.com/HakanVardarr/rignore.svg?branch=master)](https://app.travis-ci.com/HakanVardarr/rignore)
+
 
 ### TODO:
 
