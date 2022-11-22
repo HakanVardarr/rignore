@@ -54,12 +54,9 @@ rignore rust
 
 ```
 
-If you don't provide a language it will print all the languages
-that gitignore.io supportes.
-
 ---
 
-But if you want to list by cli command you can use
+If you want to list by cli command you can use
 
 ```bash
 
