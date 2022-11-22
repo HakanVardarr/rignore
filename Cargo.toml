@@ -1,20 +1,14 @@
 [package]
 name = "rignore"
-version = "1.0.3"
+version = "0.1.0"
 edition = "2021"
-authors = ["Hakan Vardar"]
-description = "Generate .gitignore files using gitignore.io api"
-license = "MIT"
-repository = "https://github.com/HakanVardarr/rignore"
-
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-clap = "3.2.20"
+reqwest = {version = "0.11.13", features = ["json"]}
+tokio = {version = "1", features = ["full"]}
 dirs = "4.0.0"
-reqwest = "0.11.11"
-tokio = {version = "1.21.0", features=["full"]}
 
 [profile.release]
 strip = true
