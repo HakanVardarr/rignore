@@ -37,20 +37,10 @@ cargo install rignore
 
 rignore -help
 
-USAGE:
-    rignore [LANGUAGE] [SUBCOMMAND]
-
-ARGS:
-    <LANGUAGE>    Dowloads the chosen language from the api
-
-OPTIONS:
-    -h, --help       Print help information
-    -V, --version    Print version information
-
-SUBCOMMANDS:
-    clear    Clears the cache
-    help     Print this message or the help of the given subcommand(s)
-    list     Lists suported languages
+INFO:
+     -> rignore help == prints commands
+     -> rignore list == lists supported langs
+     -> rignore <supported_lang(example = 'rust')> == creates a .gitignore file
 
 ```
 
