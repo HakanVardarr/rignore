@@ -22,6 +22,7 @@ impl Filee {
 
         if is_valid == false {
             eprintln!("ERROR: {name} is not supported.");
+            std::process::exit(1);
         };
 
         Ok(Self {
