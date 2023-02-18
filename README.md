@@ -35,7 +35,7 @@ cargo install rignore
 
 ```bash
 
-rignore -help
+rignore help
 
 INFO:
      -> rignore help == prints commands
