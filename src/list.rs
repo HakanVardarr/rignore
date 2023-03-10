@@ -1,5 +1,6 @@
 use std::fs::create_dir_all;
 use std::fs::File;
+use std::io::BufWriter;
 use std::io::{Read, Write};
 
 use crate::file;
@@ -24,6 +25,7 @@ impl List {
         let mut language_list = Vec::new();
 
         create_dir_all(path.clone());
+        println!("{path}");
         let mut file = match File::open(format!("{}{}", path, "/rignore-cache-list")) {
             Ok(mut file_content) => {
                 file_content.read_to_string(&mut string_list);
@@ -41,12 +43,16 @@ impl List {
                 let mut lang_list =
                     File::create(format!("{}{}", path, "/rignore-cache-list")).unwrap();
                 let mut list = List::_get_list().await?;
+                let mut writer = BufWriter::new(lang_list);
 
                 for line in list.iter_mut() {
                     line.push_str(" ");
-                    lang_list.write(line.as_bytes());
+                    writer
+                        .write_all(line.as_bytes())
+                        .expect("ERROR: unable to write data");
                 }
-                list = list.iter().map(|lang| lang.trim().to_owned()).collect();
+
+                list = list.iter().map(|s| s.trim().to_string()).collect();
                 language_list = list;
             }
         };
