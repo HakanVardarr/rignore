@@ -41,6 +41,7 @@ INFO:
      -> rignore help == prints commands
      -> rignore list == lists supported langs
      -> rignore <supported_lang(example = 'rust')> == creates a .gitignore file
+     -> rignore clear == clear cache
 
 ```
 
