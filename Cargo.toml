@@ -1,6 +1,6 @@
 [package]
 name = "rignore"
-version = "1.0.6"
+version = "1.1.0"
 edition = "2021"
 authors = ["Hakan Vardar"]
 description = "Generate .gitignore files using gitignore.io api"
