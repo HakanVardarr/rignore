@@ -25,7 +25,7 @@ impl List {
         let mut language_list = Vec::new();
 
         create_dir_all(path.clone());
-        println!("{path}");
+
         let mut file = match File::open(format!("{}{}", path, "/rignore-cache-list")) {
             Ok(mut file_content) => {
                 file_content.read_to_string(&mut string_list);
